@@ -1,37 +1,40 @@
 import React, { Component } from 'react';
 import CartProduct from './cartProduct';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
+
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
 
-function CartButton({className, icon}) {
+function CartButton({className}) {
     return (
         <div className={`${className} cart-button`}>
-            <i className={icon}/>        
+            <FontAwesomeIcon icon={faTimes} />      
         </div>
     )
 }
 
 function CartContent({className, products}) {
     let count = products.length;
-    let prodcutsJSX = products.map(product => <CartProduct key={product._id}  />)
+    let productsJSX = products.map(product => <CartProduct {...product} key={product._id}  />)
     return (
         <div className={`${className} cart-content`}>
             <div className='cart-content__title'>
                 Cart ({count})
             </div>
             <div className='cart-content__products'>
-                {prodcutsJSX}
+                {productsJSX}
             </div>
             <div className='cart-content__footer'>
 
             </div>
-            <CartFooter className='cart-content__footer' prodcuts={products} />
+            <CartFooter className='cart-content__footer' products={products} />
         </div>
     )
 }
 
-function CartFooter ({ className, prodcuts}) {
+function CartFooter ({ className, products}) {
     const price = 7.96;
     return (
         <div className={`${className} cart-footer`}>
@@ -56,7 +59,7 @@ class ShopCart extends Component {
         const { className } = this.props;
         return (
             <div className={`${className} shop-cart`}>
-                <CartButton className='shop-cart__toggle' icon='fas fa-times'/>
+                <CartButton className='shop-cart__toggle' />
                 <CartContent className='shop-cart__content' products={this.props.cartProducts}/>
             </div>
         )

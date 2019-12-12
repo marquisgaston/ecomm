@@ -38,59 +38,63 @@
     font-size: 28px;
     border-radius: 25px 0 0 25px;
     height: 40px;
-    width: 76px;  
+    width: 76px;
 }
 
 .cart-content {
     display: grid;
-    grid-template-columns: [footer-s] 30px [s] 1fr [e] 30px [footer-e] ;
-    grid-template-rows: 25px [title-s] 50px [title-e products-s] 1fr[products-e footer-s] 113px [footer-e];
+    grid-template-rows: 25px [title-s] 40px [title-e products-s] 1fr [products-e footer-s] 113px [footer-e];
+    grid-template-columns: [footer-s] 30px [s] 1fr [e] 30px [footer-e];
 
     &__title {
-        grid-row: title-s/title-e;
         grid-column: s/e;
+        grid-row: title-s/title-e;
         font-weight: 600;
         font-size: 30px;
         font-family: 'Titillium Web';
         color: #E6E6E6;
+        // margin-bottom: 50px;
     }
     &__products {
-        padding-top: 40px;
-        grid-row: products-s/products-e;
+        padding-top: 50px;
         grid-column: s/e;
+        grid-row: products-s/products-e;
         display: grid;
         overflow-y: scroll;
+        grid-row-gap: 45px;
     }
     &__footer {
-        grid-row: footer-s/footer-e;
         grid-column: footer-s/footer-e;
+        grid-row: footer-s/footer-e;
         display: grid;
     }
 }
 
+
 .cart-footer {
     height: 113px;
-    background-color: #1a1a1a;
+    background-color: #1A1A1A;
 
     display: grid;
     grid-template-rows: [s] 1fr [e];
-    grid-template-columns:50px [checkout-s] 1fr [checkout-e sub-s] 1fr [sub-e] 27px [price-s] 46px [price-e] 31px;
+    grid-template-columns: 50px [checkout-s] 1fr [checkout-e sub-s] 1fr [sub-e] 27px [price-s] 46px [price-e] 31px;
     align-items: center;
 
     & > * {
         grid-row: s/e;
     }
-
+  
     &__checkout {
-        grid-column: checkout-s/checkout-e;
+        grid-column: checkout-s/checkout-e; 
 
-        display:grid;
+        display: grid;
         justify-items: center;
         align-items: center;
-        height: 30px;
+
+        height: 38px;
         width: 183px;
         border-radius: 20px;
-        background-color: #00cb79;
+        background-color: #00CB79;
 
         color: white;
         font-size: 1.6rem;
@@ -113,13 +117,13 @@
 
     &__subtotal {
         justify-self: end;
-        grid-column: sub-s/sub-e;
+        grid-column: sub-s/sub-e; 
         font-size: 18px;
     }
 
     &__price {
         justify-self: start;
-        grid-column: price-s/price-e;
+        grid-column: price-s/price-e; 
         font-size: 18px;
         color: white;
         font-weight: 600;
