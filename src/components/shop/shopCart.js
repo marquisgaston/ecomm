@@ -2,18 +2,12 @@ import React, { Component } from 'react';
 import CartProduct from './cartProduct';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { fas, faCartPlus } from '@fortawesome/free-solid-svg-icons';
 
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
 
-function CartButton({className}) {
-    return (
-        <div className={`${className} cart-button`}>
-            <FontAwesomeIcon icon={faTimes} />      
-        </div>
-    )
-}
+import CartButton, {CartButtonPlus} from './cartButton';
 
 function CartContent({className, products}) {
     let count = products.length;
@@ -52,14 +46,23 @@ function CartFooter ({ className, products}) {
 }
 
 class ShopCart extends Component {
+
     componentDidMount () {
         this.props.fetchCartProducts();
+    }
+
+    handleAddToCart = () => {
+        if (document.getElementById('shop-cart').classList.contains('cart-hidden')) {
+            document.getElementById('shop-cart').classList.remove('cart-hidden');
+        } else {
+            document.getElementById('shop-cart').classList.add('cart-hidden');
+        }
     }
     render() {
         const { className } = this.props;
         return (
-            <div className={`${className} shop-cart`}>
-                <CartButton className='shop-cart__toggle' />
+            <div id='shop-cart' className={`${className} shop-cart cart-hidden`}>
+                <CartButton className='shop-cart__toggle' onClick={this.handleAddToCart} />
                 <CartContent className='shop-cart__content' products={this.props.cartProducts}/>
             </div>
         )
@@ -68,7 +71,6 @@ class ShopCart extends Component {
 
 function mapStateToProps (state) {
     const { cartProducts } = state.user;
-    console.log(cartProducts);
     return {
         cartProducts
     }
