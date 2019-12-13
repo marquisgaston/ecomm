@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 
-// import SignInForm from "./signinForm";
 import PageTitle from '../pageTitle';
+
+// REDUX 
 
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
@@ -16,19 +17,19 @@ class Shipping extends Component {
     }
 
     onSubmit = (fields) => {
-        console.log(fields)
+        console.log(fields);
     }
 
-    render() { 
-        return ( 
-            <div className="shipping">
-                <PageTitle className='shipping__page-title' title='Shipping Information' />
-                <ShippingForm onSubmit={this.onSubmit} className="shipping__form" />
+    render() {
+        return (
+            <div className='shipping'>
+                <PageTitle className='shipping__page-title' title='Shipping Address' />
+                <ShippingForm onSubmit={this.onSubmit} className='shipping__form' />
             </div>
-         );
+        )
     }
 }
 
 Shipping = connect(null, actions)(Shipping);
- 
+
 export default Shipping;
