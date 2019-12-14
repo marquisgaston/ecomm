@@ -51,7 +51,8 @@ body {
 // order review
 @import 'order/review';
 @import 'order/review-form';
-@import 'order/review-product.scss';
-@import 'information/shipping.scss';
-@import 'information/shipping.scss';
-@import 'order/infoHelp.scss';
+@import 'order/review-product';
+@import 'information/shipping';
+@import 'information/shipping';
+@import 'order/infoHelp';
+@import 'information/payment';
