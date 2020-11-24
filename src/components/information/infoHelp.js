@@ -20,3 +20,4 @@ export function InfoTitle({ className, title, value }) {
         </div>
     )
 }
+
